@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nhóm Tác Giả - Hành Động Xanh</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="logo.png" />
+    <style>
+      :root {
+        --green: #2e7d32;
+        --green-light: #66bb6a;
+        --green-dark: #1b5e20;
+        --bg: linear-gradient(135deg, #f1f8e9, #e8f5e9);
+        --glass: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Body */
+      body {
+        font-family: "Nunito", "Segoe UI", sans-serif;
+        background: var(--bg);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* HEADER */
+      header {
+        background: linear-gradient(135deg, #2e7d32, #66bb6a);
+        color: white;
+        text-align: center;
+        padding: 70px 20px 50px;
+        border-bottom-left-radius: 60px;
+        border-bottom-right-radius: 60px;
+        box-shadow: 0 10px 40px rgba(46, 125, 50, 0.4);
+        animation: fadeDown 1s ease;
+      }
+
+      header h1 {
+        font-size: 3rem;
+        font-weight: 900;
+      }
+
+      header p {
+        font-size: 1.3rem;
+        opacity: 0.95;
+      }
+
+      /* CONTENT */
+      .main-content {
+        flex: 1;
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 0 20px;
+      }
+
+      /* CARD CHUNG */
+      .leader-card,
+      .member-card,
+      .gvhd-card {
+        background: var(--glass);
+        backdrop-filter: blur(12px);
+        border-radius: 25px;
+        padding: 30px 20px;
+        text-align: center;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+      }
+
+      /* BORDER nổi bật */
+      .leader-card,
+      .gvhd-card {
+        border: 3px solid var(--green);
+      }
+
+      /* GRID */
+      .members {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin-bottom: 60px;
+      }
+
+      /* HOVER */
+      .member-card:hover,
+      .leader-card:hover,
+      .gvhd-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 25px 60px rgba(46, 125, 50, 0.3);
+      }
+
+      /* AVATAR */
+      .avatar-container {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        padding: 8px;
+        background: linear-gradient(135deg, #66bb6a, #a5d6a7);
+      }
+
+      .avatar {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        transition: 0.4s;
+      }
+
+      .member-card:hover .avatar {
+        transform: scale(1.1);
+      }
+
+      /* TEXT */
+      .name {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--green);
+      }
+
+      .role {
+        color: #555;
+        margin: 10px 0;
+      }
+
+      .school {
+        background: #e8f5e9;
+        color: var(--green-dark);
+        padding: 8px 18px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+      }
+
+      /* BUTTON */
+      .back {
+        text-align: center;
+        margin: 40px 0;
+      }
+
+      .back a {
+        padding: 14px 35px;
+        background: linear-gradient(135deg, #2e7d32, #66bb6a);
+        color: white;
+        border-radius: 40px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: 0.3s;
+      }
+
+      .back a:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(46, 125, 50, 0.4);
+      }
+
+      /* FOOTER */
+      footer {
+        background: linear-gradient(135deg, #2e7d32, #66bb6a);
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
+      }
+
+      /* ANIMATION */
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 2.3rem;
+        }
+      }
+      .members {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+        justify-content: center; /* canh giữa lại */
+        gap: 25px;
+      }
+      .main-content {
+        flex: 1;
+        max-width: 1000px; /* thu gọn lại */
+        margin: 50px auto; /* auto = canh giữa */
+        padding: 0 20px;
+      }
+      body {
+        padding: 0 20px; /* tạo lề 2 bên */
+      }
+      .leader-card,
+      .gvhd-card {
+        max-width: 700px; /* trước đang full */
+        margin: 0 auto 50px;
+      }
+      .members {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+        justify-content: center; /* căn giữa toàn bộ */
+        gap: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>👥 Nhóm Tác Giả</h1>
+      <p>Cùng nhau xây dựng dự án Hành động xanh 🌱</p>
+    </header>
+
+    <div class="container">
+      <!-- Nhóm trưởng -->
+      <div class="leader-card">
+        <div class="avatar-container">
+          <img
+            src="https://i.imgur.com/2DhmtJ4.png"
+            class="avatar"
+            alt="Nguyễn Hữu Nhật Quang"
+          />
+        </div>
+        <div class="name">Nguyễn Hữu Nhật Quang</div>
+        <div class="role">Nhóm trưởng</div>
+        <div class="school">Trường THCS Nguyễn Văn Trỗi</div>
+      </div>
+
+      <!-- 4 Thành viên xếp 1 hàng -->
+      <div class="members">
+        <div class="member-card">
+          <div class="avatar-container">
+            <img
+              src="https://i.imgur.com/2DhmtJ4.png"
+              class="avatar"
+              alt="Phan Ngọc Gia Phú"
+            />
+          </div>
+          <div class="name">Phan Ngọc Gia Phú</div>
+          <div class="role">Thành viên</div>
+          <div class="school">Trường THCS Nguyễn Văn Trỗi</div>
+        </div>
+
+        <div class="member-card">
+          <div class="avatar-container">
+            <img
+              src="https://i.imgur.com/2DhmtJ4.png"
+              class="avatar"
+              alt="Nguyễn Vũ Anh Quân"
+            />
+          </div>
+          <div class="name">Nguyễn Vũ Anh Quân</div>
+          <div class="role">Thành viên</div>
+          <div class="school">Trường THCS Nguyễn Văn Trỗi</div>
+        </div>
+
+        <div class="member-card">
+          <div class="avatar-container">
+            <img
+              src="https://i.imgur.com/2DhmtJ4.png"
+              class="avatar"
+              alt="Đặng Trần Như Ý"
+            />
+          </div>
+          <div class="name">Đặng Trần Như Ý</div>
+          <div class="role">Thành viên</div>
+          <div class="school">Trường THCS Nguyễn Văn Trỗi</div>
+        </div>
+
+        <div class="member-card">
+          <div class="avatar-container">
+            <img
+              src="https://i.imgur.com/2DhmtJ4.png"
+              class="avatar"
+              alt="Phan Hồ Anh Thư"
+            />
+          </div>
+          <div class="name">Phan Hồ Anh Thư</div>
+          <div class="role">Thành viên</div>
+          <div class="school">Trường THCS Nguyễn Văn Trỗi</div>
+        </div>
+      </div>
+
+      <!-- Giáo viên hướng dẫn -->
+      <div class="gvhd-card">
+        <div class="avatar-container">
+          <img
+            src="https://i.imgur.com/2DhmtJ4.png"
+            class="avatar"
+            alt="Nguyễn Phước Quỳnh Anh"
+          />
+        </div>
+        <div class="name">Nguyễn Phước Quỳnh Anh</div>
+        <div class="role">Giáo viên hướng dẫn</div>
+        <div class="school">Trường THCS Nguyễn Văn Trỗi</div>
+      </div>
+    </div>
+
+    <div class="back">
+      <a href="index.html">⬅️ Quay về trang chính</a>
+    </div>
+
+    <footer>🌿 Together we make the Earth greener 💚</footer>
+  </body>
+</html>

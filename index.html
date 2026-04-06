@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green School</title>
+    <link rel="icon" type="image/png" href="logo.png" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      header {
+        background: linear-gradient(135deg, #2e8b57, #4caf50);
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo span {
+        color: #ffd700;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .nav-links a:hover {
+        color: #ffd700;
+      }
+
+      .hero {
+        height: 100vh;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+          url("PICTURE/ANH\ 1.jpg") center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        margin-top: 70px;
+      }
+
+      .hero h1 {
+        font-size: 4.2rem;
+        margin-bottom: 20px;
+      }
+      .hero p {
+        font-size: 1.35rem;
+        margin-bottom: 30px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 14px 40px;
+        background: #ffd700;
+        color: #2e8b57;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: all 0.3s;
+      }
+
+      .btn:hover {
+        background: #ffed4e;
+        transform: translateY(-5px);
+      }
+
+      section {
+        padding: 100px 0;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      h2 {
+        text-align: center;
+        font-size: 2.8rem;
+        margin-bottom: 60px;
+        color: #2e8b57;
+      }
+
+      /* Cards */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 30px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+      }
+
+      .card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .card-content {
+        padding: 25px;
+      }
+
+      .card h3 {
+        color: #2e8b57;
+        margin-bottom: 15px;
+      }
+
+      /* Footer */
+      footer {
+        background: #096934;
+        color: white;
+        padding: 80px 0 30px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+      }
+      /* Nút Tìm hiểu thêm - đặt ở giữa */
+      .btn1 {
+        display: block;
+        margin: 25px auto 30px auto;
+        padding: 12px 30px;
+        background: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 600;
+        width: fit-content;
+        transition: 0.3s;
+        box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+      }
+
+      .btn1:hover {
+        background: #2e7d32;
+        transform: translateY(-3px);
+      }
+      .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(6px); /* 🔥 làm mờ nền */
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+      }
+
+      .popup-content {
+        background: #fff;
+        padding: 30px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 600px; /* 🔥 rộng hơn */
+        text-align: left;
+        animation: fadeIn 0.3s ease;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .popup-content h2 {
+        margin-bottom: 15px;
+        color: #2e7d32;
+        font-size: 1.8rem;
+      }
+
+      .popup-content p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 28px;
+        cursor: pointer;
+        color: #888;
+        transition: 0.3s;
+      }
+
+      .close:hover {
+        color: #000;
+        transform: scale(1.2);
+      }
+
+      @keyframes fadeIn {
+        from {
+          transform: translateY(40px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .text {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        color: #555;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav>
+        <div class="logo"><span>Green</span>School</div>
+        <ul class="nav-links">
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#kien-thuc">Kiến thức MT</a></li>
+          <li><a href="#scratch">Trò chơi Scratch</a></li>
+          <li><a href="#sang-tao">Sáng tạo từ rác</a></li>
+          <li><a href="#trung-bay">Trưng bày SP</a></li>
+          <li><a href="tacgia.html">Tác Giả</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1>Green School</h1>
+        <p>Green School -- Hành trình giảm nhựa và tái sáng tạo</p>
+        <a href="khampha.html" class="btn1">Khám phá các hoạt động xanh</a>
+      </div>
+    </section>
+
+    <!-- About ngắn -->
+    <section style="background: #f8fff8">
+      <div class="container">
+        <h2>Về Green School</h2>
+        <p
+          style="
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+          "
+        >
+          Trang web này không những cung cấp thông tin mà còn là một môi trường
+          học tập trực tuyến, giúp học sinh vừa học vừa trải nghiệm các hoạt
+          động bảo vệ môi trường một cách sáng tạo và thú vị. Từ kiến thức về hệ
+          sinh thái, trò chơi lập trình Scratch đến các dự án tái chế. Green
+          School là nơi khơi dậy niềm đam mê và ý thức bảo vệ hành tinh xanh của
+          thế hệ trẻ.
+        </p>
+      </div>
+    </section>
+
+    <!-- 1. Kiến thức môi trường -->
+    <section id="kien-thuc">
+      <div class="container">
+        <h2>Kiến thức Môi trường</h2>
+        <div class="grid">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800"
+              alt="Hệ sinh thái"
+            />
+            <div class="card-content">
+              <h3><i class="fas fa-tree"></i> Thông tin quan trọng</h3>
+              <p>
+                - Khái niệm rác thải nhựa <br />- Tác hại của túi nilon và chai
+                nhựa<br />
+                - Nguyên nhân và hậu quả gây ô nhiễm môi trường<br />
+                - Các biện pháp bảo vệ môi trường
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1587502537745-84b86da1204f?w=800"
+              alt="Phân loại rác"
+            />
+            <div class="card-content">
+              <h3><i class="fas fa-recycle"></i> Đặc Điểm</h3>
+              <p>
+                - Nội dung ngắn gọn dễ hiểu<br />- Hình ảnh minh họa sinh động
+                <br />- Phù hợp với học sinh tiểu học
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800"
+              alt="Năng lượng"
+            />
+            <div class="card-content">
+              <h3><i class="fas fa-solar-panel"></i> Ý Nghĩa</h3>
+              <p>
+                - Giúp học sinh hiểu rõ về tác hại của rác thải nhựa và tầm quan
+                trọng hay vấn đề môi trường<br />- là nên tảng thay đổi nhận
+                thức và hành động của học sinh để bảo vệ môi trường ngay từ khi
+                còn nhỏ.
+              </p>
+            </div>
+          </div>
+        </div>
+        <a href="kienthucmoitruong.html" class="btn1">Tìm hiểu thêm →</a>
+      </div>
+    </section>
+
+    <!-- 2. Trò chơi Scratch -->
+    <section id="scratch" style="background: #f8fff8">
+      <div class="container">
+        <h2>Trò chơi Scratch – Học lập trình & Bảo vệ môi trường</h2>
+        <div class="grid">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800"
+              alt="Scratch"
+            />
+            <div class="card-content">
+              <h3>
+                <i class="fas fa-gamepad"></i> Các trò chơi Scratch-Bảo vệ môi
+                trường
+              </h3>
+              <p>
+                Các trò chơi đơn giản có chủ đề là bảo vệ môi trường ,nhằm cho
+                thấy sự thú vì của việc bảo vệ môi trường và khuyến khích học
+                sinh tham gia vào các hoạt động xanh.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="games.png" alt="Coding" />
+            <div class="card-content">
+              <h3><i class="fas fa-code"></i> Dự án Scratch môi trường</h3>
+              <p>
+                Các trò chơi như:
+                <br />
+                - Phân loại rác thải<br />
+                - Game bảo vệ môi trường<br />
+                - Thỏ bảo vệ môi trường<br />
+                - Game trồng cây xanh
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <a href="trochoi.html" class="btn1">!!Tham gia các trò chơi ngay!! →</a>
+      </div>
+    </section>
+
+    <!-- 3. Sáng tạo từ rác thải -->
+    <section id="sang-tao">
+      <div class="container">
+        <h2>Sáng tạo từ rác thải – Upcycling</h2>
+        <p class="text">nhấn vào các thẻ để xem chi tiết</p>
+        <div class="grid">
+          <div
+            class="card"
+            data-title="🌱 Chậu cây từ chai nhựa"
+            data-text="Biến chai nhựa cũ thành chậu cây xinh xắn chỉ với vài bước đơn giản! 
+Rửa sạch, cắt tạo hình tùy thích, đục lỗ thoát nước và trang trí theo phong cách riêng. 
+Sau đó thêm đất, trồng cây nhỏ như hoa hoặc rau xanh. 
+Hoạt động này giúp rèn luyện sáng tạo, tiết kiệm và góp phần bảo vệ môi trường xanh sạch đẹp."
+          >
+            <img src="PICTURE/anh1.jpg" alt="Robot từ rác" />
+            <div class="card-content">
+              <h3>
+                <i class="fas fa-robot"></i>Hướng dẫn làm chậu cây từ chai nhựa
+              </h3>
+              <p>
+                Học sinh sẽ được hướng dẫn cách cắt, trang trí và trồng cây
+                trong chai nhựa đã qua sử dụng, biến rác thải thành những chậu
+                cây xinh xắn.
+              </p>
+            </div>
+            <a href="lamchaucay.html" class="btn1">Xem chi tiết →</a>
+          </div>
+          <div
+            class="card"
+            data-title="🧶 Móc túi & hộp từ nilon tái chế"
+            data-text="Biến túi nilon đã qua sử dụng thành những sản phẩm hữu ích như túi xách và hộp đựng xinh xắn. 
+Chỉ cần làm sạch, cắt sợi và móc theo mẫu đơn giản là bạn đã có thể tạo ra món đồ độc đáo của riêng mình. 
+Hoạt động giúp rèn luyện sự khéo léo, sáng tạo và góp phần giảm rác thải nhựa, bảo vệ môi trường."
+          >
+            <img src="PICTURE/1.jpg" alt="Nghệ thuật tái chế" />
+            <div class="card-content">
+              <h3>
+                <i class="fas fa-paint-brush"></i> Hướng dẫn móc túi, hộp hút
+                bằng nilon
+              </h3>
+              <p>
+                Học sinh sẽ học cách móc túi, hộp hút từ nilon, tạo ra những sản
+                phẩm hữu ích và đẹp mắt từ rác thải nhựa, đồng thời nâng cao ý
+                thức về tái chế và bảo vệ môi trường.
+              </p>
+            </div>
+            <a href="tuinilon.html" class="btn1">Xem chi tiết →</a>
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800"
+              alt="Vườn trường"
+            />
+            <div class="card-content">
+              <h3>
+                <i class="fas fa-seedling"></i> Một số hình ảnh về các sản phẩm
+                tái chế hữu cơ
+              </h3>
+              <p>
+                Học sinh tự làm thùng ủ phân compost và trồng rau sạch ngay tại
+                trường.
+              </p>
+            </div>
+            <a href="trienlam.html" class="btn1">Triển lãm →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Trưng bày sản phẩm -->
+    <section id="trung-bay" style="background: #f8fff8">
+      <div class="container">
+        <h2>Triển lãm & Trưng bày sản phẩm học sinh</h2>
+        <div class="grid">
+          <div class="card">
+            <img src="Screenshot 2026-04-05 183550.png" alt="Triển lãm" />
+            <div class="card-content">
+              <h3>🌍 Ngày Hội Trái Đất – Triển lãm thường niên</h3>
+              <p>
+                Hàng trăm sản phẩm tái chế, mô hình STEM xanh và trò chơi
+                Scratch do chính học sinh thực hiện được trưng bày.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800"
+              alt="Gallery"
+            />
+            <div class="card-content">
+              <h3>Gallery “Rác thành Vàng”</h3>
+              <p>
+                Không gian thường trực trưng bày các tác phẩm xuất sắc nhất của
+                học sinh qua các năm.
+              </p>
+            </div>
+            <a href="trienlam.html" class="btn1">Triển lãm →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h3>🌱 Green School</h3>
+            <p>Nuôi dưỡng thế hệ yêu môi trường và sáng tạo bền vững.</p>
+          </div>
+          <div>
+            <h4>Liên hệ</h4>
+            <p>
+              📍 Trường THCS Nguyễn Văn Trỗi, phường Thuỷ Xuân, thành phố Huế
+            </p>
+            <p>✉️ info@greenschool.edu.vn</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 60px; opacity: 0.8">
+          © 2026 Green School.
+        </div>
+      </div>
+    </footer>
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close">&times;</span>
+        <img
+          id="popup-img"
+          style="width: 100%; border-radius: 15px; margin-bottom: 15px"
+        />
+        <h2 id="popup-title"></h2>
+        <p id="popup-text"></p>
+      </div>
+    </div>
+    <script>
+      const cards = document.querySelectorAll(".card");
+      const popup = document.getElementById("popup");
+      const title = document.getElementById("popup-title");
+      const text = document.getElementById("popup-text");
+      const closeBtn = document.querySelector(".close");
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          title.innerText = card.dataset.title;
+          text.innerText = card.dataset.text;
+          popup.style.display = "flex";
+        });
+      });
+
+      closeBtn.onclick = () => (popup.style.display = "none");
+
+      window.onclick = (e) => {
+        if (e.target === popup) {
+          popup.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

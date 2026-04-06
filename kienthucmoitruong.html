@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kiến thức Môi trường - Green School</title>
+    <link rel="icon" type="image/png" href="logo.png" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.7;
+        color: #333;
+        background: #f8fff8;
+      }
+      header {
+        background: linear-gradient(135deg, #2e8b57, #4caf50);
+        color: white;
+        padding: 1.5rem 0;
+        text-align: center;
+      }
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 30px auto;
+        padding: 0 20px;
+      }
+      h1 {
+        color: #2e8b57;
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 2.8rem;
+      }
+      h2 {
+        color: #2e8b57;
+        margin: 50px 0 25px 0;
+        font-size: 2.1rem;
+        border-left: 7px solid #4caf50;
+        padding-left: 18px;
+      }
+
+      .section {
+        background: white;
+        border-radius: 15px;
+        padding: 35px;
+        margin-bottom: 40px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: center;
+        margin-bottom: 25px;
+      }
+      img {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Phần B - Nút rút gọn */
+      .toggle-btn {
+        display: block;
+        width: 100%;
+        padding: 15px 20px;
+        background: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin: 15px 0;
+        transition: 0.3s;
+      }
+      .toggle-btn:hover {
+        background: #2e7d32;
+      }
+      .toggle-content {
+        display: none;
+        padding: 20px;
+        background: #f1f8f1;
+        border-radius: 10px;
+        margin-top: 10px;
+      }
+      .toggle-content.show {
+        display: block;
+      }
+
+      .highlight {
+        background: #e8f5e9;
+        padding: 25px;
+        border-radius: 12px;
+        margin: 25px 0;
+      }
+
+      .btn-back {
+        display: inline-block;
+        margin: 30px 0;
+        padding: 12px 30px;
+        background: #2e8b57;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 600;
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px 20px;
+        background: #1e5c3a;
+        color: white;
+        margin-top: 60px;
+      }
+      /* Header - Bo tròn */
+      header {
+        background: linear-gradient(135deg, #2e8b57, #4caf50);
+        color: white;
+        padding: 1.2rem 0;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Footer - Bo tròn */
+      footer {
+        text-align: center;
+        padding: 35px 15px 25px;
+        background: #1e5c3a;
+        color: white;
+        margin-top: 50px;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+      }
+      video {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo">🌱 Green School - Kiến thức Môi trường</div>
+    </header>
+
+    <div class="container">
+      <h1>KIẾN THỨC MÔI TRƯỜNG</h1>
+
+      <!-- ==================== PHẦN A ==================== -->
+      <div class="section">
+        <h2>A. Nội dung chính</h2>
+
+        <h2>1. Rác thải nhựa là gì?</h2>
+        <div class="content">
+          <div>
+            <p>
+              Rác thải nhựa là tất cả các sản phẩm được làm từ chất liệu nhựa đã
+              qua sử dụng và bị con người vứt bỏ. Nhựa là một loại vật liệu tổng
+              hợp được sản xuất từ dầu mỏ, rất khó phân hủy tự nhiên trong môi
+              trường.
+            </p>
+            <p>
+              <strong>Các loại phổ biến:</strong> Túi ni lông, chai nước nhựa,
+              ống hút, hộp xốp, ly nhựa, bao bì thực phẩm, đồ chơi nhựa hỏng...
+            </p>
+          </div>
+          <video src="PICTURE/rác thải nhựa.mp4" alt="Rác thải nhựa" controls />
+        </div>
+
+        <h2>2. Tác hại nghiêm trọng của túi ni lông và chai nhựa</h2>
+        <div class="content">
+          <div>
+            <ul>
+              <li>
+                Phân hủy cực chậm: Một chiếc túi ni lông có thể mất từ
+                <strong>400 - 1000 năm</strong> để phân hủy hoàn toàn.
+              </li>
+              <li>Gây ô nhiễm đất, sông ngòi, biển và đại dương.</li>
+              <li>
+                Động vật hoang dã (rùa biển, cá heo, chim biển) thường nhầm lẫn
+                túi ni lông với thức ăn và bị chết ngạt hoặc tắc ruột.
+              </li>
+              <li>
+                Khi đốt sẽ thải ra khí độc dioxin gây ung thư và hại cho sức
+                khỏe con người.
+              </li>
+              <li>
+                Nhựa phân hủy thành vi nhựa (microplastic) len lỏi vào chuỗi
+                thức ăn và cơ thể con người.
+              </li>
+            </ul>
+          </div>
+          <video src="PICTURE/tác hại.mp4" alt="Tác hại nhựa" controls />
+        </div>
+
+        <h2>3. Nguyên nhân gây ô nhiễm môi trường do rác thải nhựa</h2>
+        <div class="highlight">
+          <p><strong>Các nguyên nhân chính:</strong></p>
+          <ul>
+            <li>
+              Sử dụng quá mức các sản phẩm nhựa dùng một lần (single-use
+              plastic).
+            </li>
+            <li>Thói quen vứt rác bừa bãi, không phân loại rác.</li>
+            <li>
+              Hệ thống thu gom và xử lý rác thải tại nhiều nơi còn yếu kém.
+            </li>
+            <li>
+              Nhận thức và ý thức bảo vệ môi trường của một bộ phận người dân
+              còn hạn chế.
+            </li>
+            <li>Sản xuất nhựa ngày càng tăng do nhu cầu tiêu dùng cao.</li>
+          </ul>
+        </div>
+
+        <h2>4. Các biện pháp bảo vệ môi trường</h2>
+        <div class="content">
+          <div>
+            <p>
+              <strong
+                >3 nguyên tắc quan trọng: Giảm – Tái sử dụng – Tái chế (Reduce -
+                Reuse - Recycle)</strong
+              >
+            </p>
+            <ul>
+              <li>
+                Mang theo túi vải, bình nước cá nhân khi đi học hoặc đi chơi.
+              </li>
+              <li>
+                Từ chối ống hút nhựa, dao nĩa nhựa, túi ni lông khi mua hàng.
+              </li>
+              <li>
+                Phân loại rác tại nhà và trường học (nhựa, giấy, kim loại, rác
+                hữu cơ).
+              </li>
+              <li>
+                Tham gia các hoạt động dọn vệ sinh môi trường, trồng cây xanh.
+              </li>
+              <li>
+                Lan tỏa ý thức sống xanh đến gia đình, bạn bè và cộng đồng.
+              </li>
+            </ul>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600"
+            alt="Bảo vệ môi trường"
+          />
+        </div>
+      </div>
+
+      <!-- ==================== PHẦN B - NÚT RÚT GỌN ==================== -->
+      <div class="section">
+        <h2>B. Đặc điểm nội dung</h2>
+
+        <button class="toggle-btn" onclick="toggleContent()">
+          <i class="fas fa-info-circle"></i> Đặc điểm của nội dung học tập
+          <span id="arrow">▼</span>
+        </button>
+
+        <div id="toggleContent" class="toggle-content">
+          <p><strong>Nội dung được thiết kế với những đặc điểm sau:</strong></p>
+          <ul>
+            <li>
+              Ngôn ngữ đơn giản, dễ hiểu, gần gũi với học sinh THCS và mọi lứa
+              tuổi.
+            </li>
+            <li>
+              Nội dung ngắn gọn, tập trung vào các kiến thức cốt lõi quan trọng.
+            </li>
+            <li>
+              Sử dụng nhiều hình ảnh minh họa sinh động, trực quan giúp dễ hình
+              dung.
+            </li>
+            <li>
+              Kết hợp lý thuyết và ví dụ thực tế trong cuộc sống hàng ngày.
+            </li>
+            <li>
+              Khuyến khích học sinh suy nghĩ và hành động bảo vệ môi trường.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ==================== PHẦN C ==================== -->
+      <div class="section">
+        <h2>C. Ý nghĩa của việc học kiến thức môi trường</h2>
+        <div class="highlight">
+          <p>
+            <strong
+              >Việc học kiến thức môi trường mang lại nhiều ý nghĩa quan
+              trọng:</strong
+            >
+          </p>
+
+          <h3>1. Giúp học sinh hiểu rõ vấn đề môi trường</h3>
+          <p>
+            Học sinh sẽ nắm được thực trạng ô nhiễm rác thải nhựa đang diễn ra
+            nghiêm trọng trên toàn thế giới và tại Việt Nam. Từ đó hiểu rõ hậu
+            quả lâu dài nếu chúng ta không hành động kịp thời.
+          </p>
+
+          <h3>2. Thay đổi nhận thức và hành vi</h3>
+          <p>
+            Kiến thức là nền tảng quan trọng nhất để thay đổi nhận thức. Khi các
+            em hiểu rõ vấn đề, các em sẽ tự giác thay đổi hành vi: từ việc không
+            vứt rác bừa bãi, giảm sử dụng đồ nhựa dùng một lần, đến tích cực
+            tham gia các hoạt động bảo vệ môi trường.
+          </p>
+
+          <h3>3. Xây dựng ý thức trách nhiệm</h3>
+          <p>
+            Giúp học sinh nhận thức được rằng mỗi cá nhân đều có trách nhiệm với
+            hành tinh xanh. Mỗi hành động nhỏ hôm nay sẽ góp phần tạo nên sự
+            thay đổi lớn cho tương lai.
+          </p>
+
+          <h3>4. Phát triển kỹ năng sống và tư duy bền vững</h3>
+          <p>
+            Khuyến khích tư duy sáng tạo, kỹ năng làm việc nhóm, và ý thức sống
+            xanh bền vững – những kỹ năng rất cần thiết cho công dân toàn cầu
+            trong thế kỷ 21.
+          </p>
+        </div>
+
+        <p
+          style="
+            text-align: center;
+            font-size: 1.35rem;
+            color: #2e8b57;
+            font-weight: 600;
+            margin-top: 30px;
+          "
+        >
+          “Hôm nay học kiến thức môi trường,<br />
+          Ngày mai chúng ta sẽ sống xanh và hành động vì một Trái Đất sạch hơn!”
+        </p>
+      </div>
+
+      <div style="text-align: center">
+        <a href="index.html" class="btn-back"
+          >← Quay về Trang chủ Green School</a
+        >
+      </div>
+    </div>
+
+    <footer>
+      <p>🌱 Green School - Trường Học Xanh</p>
+      <p>© 2026 - Nuôi dưỡng thế hệ yêu môi trường và có trách nhiệm</p>
+    </footer>
+
+    <script>
+      function toggleContent() {
+        const content = document.getElementById("toggleContent");
+        const arrow = document.getElementById("arrow");
+
+        if (content.classList.contains("show")) {
+          content.classList.remove("show");
+          arrow.textContent = "▼";
+        } else {
+          content.classList.add("show");
+          arrow.textContent = "▲";
+        }
+      }
+    </script>
+  </body>
+</html>

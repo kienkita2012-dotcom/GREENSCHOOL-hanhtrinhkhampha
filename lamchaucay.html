@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hướng Dẫn Làm Chậu Cây Từ Chai Nhựa 🌱</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --green: #2e7d32;
+        --light-green: #66bb6a;
+        --accent: #a5d6a7;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Nunito", sans-serif;
+        background: linear-gradient(to bottom, #f1f8e9, #e8f5e9);
+        color: #333;
+        line-height: 1.75;
+      }
+
+      header {
+        background: linear-gradient(135deg, var(--green), var(--light-green));
+        color: white;
+        text-align: center;
+        padding: 80px 20px 60px;
+        border-bottom-left-radius: 80px;
+        border-bottom-right-radius: 80px;
+      }
+
+      header h1 {
+        font-size: 2.9rem;
+        font-weight: 900;
+        margin-bottom: 12px;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 50px auto;
+        padding: 0 20px;
+      }
+
+      h2 {
+        color: var(--green);
+        font-size: 2rem;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .card {
+        background: white;
+        border-radius: 28px;
+        padding: 38px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        margin-bottom: 50px;
+      }
+
+      img {
+        width: 100%;
+        border-radius: 20px;
+        margin: 20px 0;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        transition: transform 0.4s ease;
+      }
+
+      img:hover {
+        transform: scale(1.03);
+      }
+
+      /* Timeline */
+      .timeline {
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 6px;
+        background: var(--accent);
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        margin: 55px 0;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        position: relative;
+      }
+
+      .timeline-item:nth-child(odd) {
+        flex-direction: row-reverse;
+      }
+
+      .timeline-dot {
+        width: 62px;
+        height: 62px;
+        background: var(--light-green);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.9rem;
+        font-weight: 900;
+        box-shadow: 0 8px 20px rgba(102, 187, 106, 0.45);
+        z-index: 2;
+        flex-shrink: 0;
+      }
+
+      .timeline-content {
+        background: white;
+        padding: 28px 32px;
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        flex: 1;
+      }
+
+      .timeline-content h3 {
+        color: var(--green);
+        font-size: 1.45rem;
+        margin-bottom: 12px;
+      }
+
+      /* Nút quay về */
+      .back-btn {
+        display: inline-block;
+        padding: 16px 40px;
+        background: var(--green);
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 700;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 10px 25px rgba(46, 125, 50, 0.3);
+        transition: all 0.4s ease;
+        margin: 40px auto;
+        display: block;
+        width: fit-content;
+      }
+
+      .back-btn:hover {
+        background: #1b5e20;
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 35px rgba(46, 125, 50, 0.4);
+      }
+
+      footer {
+        background: linear-gradient(135deg, var(--green), var(--light-green));
+        color: white;
+        text-align: center;
+        padding: 60px 20px;
+        margin-top: 80px;
+        border-top-left-radius: 80px;
+        border-top-right-radius: 80px;
+      }
+
+      @media (max-width: 768px) {
+        .timeline::before {
+          left: 31px;
+        }
+        .timeline-item {
+          flex-direction: column !important;
+          align-items: flex-start;
+        }
+        .timeline-content {
+          margin-left: 80px;
+        }
+      }
+      img {
+        width: 80%; /* nhỏ lại */
+        max-width: 600px; /* giới hạn kích thước */
+        display: block;
+        margin: 20px auto; /* căn giữa */
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        transition: transform 0.4s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>🌱 HƯỚNG DẪN LÀM CHẬU CÂY TỪ CHAI NHỰA</h1>
+      <p>Thân thiện với môi trường • Dễ làm • Sáng tạo</p>
+    </header>
+
+    <div class="container">
+      <div class="card">
+        <h2>📌 1. Giới thiệu</h2>
+        <p style="text-align: center; font-size: 1.18rem">
+          Tái chế chai nhựa thành chậu cây là một hoạt động thú vị, giúp giảm
+          thiểu rác thải nhựa, bảo vệ môi trường và tạo ra những sản phẩm
+          handmade xinh xắn để trang trí không gian sống.
+        </p>
+        <img
+          src="PICTURE/chaucay2.jpg"
+          alt="Chậu cây tái chế hình con vật dễ thương"
+        />
+      </div>
+
+      <div class="card">
+        <h2>🧰 2. Dụng cụ cần chuẩn bị</h2>
+        <ul>
+          <li>Chai nhựa sạch (loại 1.5L – 2L)</li>
+          <li>Kéo sắc hoặc dao rọc giấy</li>
+          <li>Bút lông đen và màu</li>
+          <li>Sơn acrylic, cọ vẽ hoặc sticker</li>
+          <li>Đinh/dùi nhọn để đục lỗ</li>
+          <li>
+            Đất trồng cây và cây giống nhỏ (sen đá, rau thơm, cây cảnh mini)
+          </li>
+          <li>Dây treo (nếu muốn làm chậu treo)</li>
+        </ul>
+      </div>
+
+      <!-- Timeline -->
+      <div class="card">
+        <h2>🔄 3. Quy trình thực hiện</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot">1</div>
+            <div class="timeline-content">
+              <h3>Thu gom và chọn chai</h3>
+              <p>
+                Thu thập chai nhựa đã qua sử dụng, chọn những chai còn nguyên
+                vẹn, không bị móp hoặc nứt.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">2</div>
+            <div class="timeline-content">
+              <h3>Rửa sạch và phơi khô</h3>
+              <p>
+                Rửa kỹ với xà phòng để loại bỏ nhãn dán và mùi, sau đó phơi khô
+                hoàn toàn.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">3</div>
+            <div class="timeline-content">
+              <h3>Vẽ và cắt tạo hình</h3>
+              <p>
+                Dùng bút vẽ đường cắt (hình tròn, sóng hoặc hình con vật), rồi
+                cắt cẩn thận theo đường vẽ.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">4</div>
+            <div class="timeline-content">
+              <h3>Đục lỗ thoát nước</h3>
+              <p>
+                Dùng đinh nóng hoặc dùi đục 4–6 lỗ nhỏ ở đáy chậu để nước thừa
+                thoát ra.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">5</div>
+            <div class="timeline-content">
+              <h3>Trang trí đẹp mắt</h3>
+              <p>
+                Sơn màu, vẽ mặt con vật hoặc dán phụ kiện để chậu trở nên sinh
+                động.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">6</div>
+            <div class="timeline-content">
+              <h3>Cho đất và trồng cây</h3>
+              <p>
+                Đổ một lớp đất, đặt cây giống vào giữa và nén đất nhẹ nhàng.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">7</div>
+            <div class="timeline-content">
+              <h3>Hoàn thiện và chăm sóc</h3>
+              <p>
+                Tưới nước vừa phải, đặt chậu ở nơi có ánh sáng gián tiếp và theo
+                dõi sự phát triển.
+              </p>
+            </div>
+          </div>
+        </div>
+        <img
+          src="PICTURE/chaucay.jpg"
+          alt="Ví dụ chậu cây tái chế hình mèo, khủng long"
+        />
+      </div>
+
+      <div class="card">
+        <h2>⚠️ 4. Những lưu ý quan trọng</h2>
+        <ul>
+          <li>Người lớn nên hỗ trợ trẻ em khi dùng kéo và dao</li>
+          <li>Đục đủ lỗ thoát nước để tránh úng rễ cây</li>
+          <li>Chọn cây dễ sống như sen đá, lưỡi hổ, rau thơm</li>
+          <li>
+            Không tưới quá nhiều nước và tránh đặt trực tiếp dưới nắng gắt
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🌟 5. Gợi ý sáng tạo</h2>
+        <p style="text-align: center; margin-bottom: 20px">
+          Hãy biến chai nhựa thành những chú thú dễ thương!
+        </p>
+        <img
+          src="PICTURE/chaucay3.jpg"
+          alt="Chậu cây hình mèo, gấu trúc và chuột"
+        />
+        <ul>
+          <li>Làm chậu hình heo, thỏ, ếch, mèo, khủng long...</li>
+          <li>Tạo chậu treo ban công hoặc tường</li>
+          <li>Làm bộ vườn mini với nhiều chậu khác kích thước</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>💚 6. Ý nghĩa</h2>
+        <p>
+          Hoạt động này không chỉ giúp giảm rác thải nhựa mà còn khơi dậy sự
+          sáng tạo, rèn luyện kỹ năng thực hành và góp phần làm cho Trái Đất của
+          chúng ta xanh hơn mỗi ngày.
+        </p>
+      </div>
+    </div>
+
+    <!-- Nút quay về với hiệu ứng -->
+    <a href="index.html" class="back-btn">⬅️ Quay về trang chính</a>
+
+    <footer>
+      ✨ Chúc bạn thực hiện thành công và có những chậu cây thật xinh đẹp!<br />
+      Cùng nhau hành động vì một môi trường xanh sạch 💚
+    </footer>
+  </body>
+</html>

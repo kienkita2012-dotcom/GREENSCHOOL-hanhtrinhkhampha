@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trò chơi Scratch - Green School</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to bottom, #f0f9f0, #e6f4e9);
+        color: #333;
+        line-height: 1.7;
+      }
+
+      /* Header */
+      header {
+        background: linear-gradient(135deg, #2e8b57, #4caf50);
+        color: white;
+        padding: 1.4rem 0;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom-left-radius: 35px;
+        border-bottom-right-radius: 35px;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.18);
+      }
+      .logo {
+        font-size: 1.85rem;
+        font-weight: bold;
+      }
+
+      /* Hero */
+      .hero {
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+          url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200")
+            center/cover no-repeat;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin-bottom: 60px;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+      }
+
+      .container {
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* 4 trò chơi trên 1 hàng */
+      .games-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        gap: 28px;
+        margin-bottom: 80px;
+      }
+
+      .game-card {
+        background: white;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        transition: all 0.4s ease;
+      }
+
+      .game-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 25px 50px rgba(46, 139, 87, 0.3);
+      }
+
+      .game-card img {
+        width: 100%;
+        height: 210px;
+        object-fit: cover;
+      }
+
+      .game-info {
+        padding: 25px 20px;
+        text-align: center;
+      }
+
+      .game-info h3 {
+        color: #2e8b57;
+        margin-bottom: 12px;
+        font-size: 1.45rem;
+      }
+
+      .game-info p {
+        color: #555;
+        font-size: 1.05rem;
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        padding: 14px 32px;
+        background: linear-gradient(135deg, #4caf50, #66bb6a);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1.08rem;
+        transition: all 0.3s;
+      }
+
+      .btn:hover {
+        background: linear-gradient(135deg, #2e7d32, #4caf50);
+        transform: scale(1.08);
+      }
+
+      /* Phần Ý nghĩa chung */
+      .meaning-section {
+        background: white;
+        border-radius: 24px;
+        padding: 45px 40px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 80px;
+        text-align: center;
+      }
+
+      .meaning-section h2 {
+        color: #2e8b57;
+        margin-bottom: 25px;
+        font-size: 2.1rem;
+      }
+
+      .meaning-section p {
+        font-size: 1.18rem;
+        color: #444;
+        max-width: 900px;
+        margin: 0 auto;
+        line-height: 1.9;
+      }
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.82);
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        position: relative;
+        width: 95%;
+        max-width: 980px;
+        height: 86vh;
+        max-height: 640px;
+        background: #fff;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        font-size: 42px;
+        color: #333;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      footer {
+        text-align: center;
+        padding: 45px 20px 35px;
+        background: #1e5c3a;
+        color: white;
+        border-top-left-radius: 35px;
+        border-top-right-radius: 35px;
+        box-shadow: 0 -6px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      @media (max-width: 768px) {
+        .games-grid {
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+      }
+      .games-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
+        margin-bottom: 80px;
+      }
+      @media (max-width: 992px) {
+        .games-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 576px) {
+        .games-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .ve {
+        text-align: center;
+        margin: 60px 0 40px;
+      }
+
+      .ve a {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+
+        padding: 14px 28px;
+        border-radius: 999px;
+
+        background: linear-gradient(135deg, #4caf50, #66bb6a);
+        color: white;
+
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-decoration: none;
+
+        box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        transition: all 0.35s ease;
+      }
+
+      /* Hover */
+      .ve a:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 15px 35px rgba(46, 139, 87, 0.6);
+        background: linear-gradient(135deg, #2e7d32, #4caf50);
+      }
+
+      /* Icon */
+      .ve a i {
+        transition: transform 0.3s;
+      }
+
+      .ve a:hover i {
+        transform: translateX(-6px);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">🌱 Green School</div>
+    </header>
+
+    <section class="hero">
+      <h1>Trò chơi Scratch</h1>
+    </section>
+
+    <div class="container">
+      <div class="games-grid">
+        <!-- Game 1 -->
+        <div class="game-card">
+          <img src="PICTURE/phanloairac.jpg" alt="Phân loại rác" />
+          <div class="game-info">
+            <h3>Phân loại rác</h3>
+            <p>
+              Kéo thả rác vào đúng thùng. Học cách phân biệt rác tái chế và rác
+              hữu cơ một cách vui nhộn.
+            </p>
+            <button
+              class="btn"
+              onclick="
+                openGame('https://scratch.mit.edu/projects/1299417951/embed')
+              "
+            >
+              Chơi ngay
+            </button>
+          </div>
+        </div>
+
+        <!-- Game 2 -->
+        <div class="game-card">
+          <img
+            src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800"
+            alt="Bảo vệ môi trường"
+          />
+          <div class="game-info">
+            <h3>Bảo vệ Môi trường</h3>
+            <p>
+              Ngăn chặn rác thải, cứu động vật và giữ cho Trái Đất luôn xanh
+              sạch.
+            </p>
+            <button
+              class="btn"
+              onclick="
+                openGame('https://scratch.mit.edu/projects/1299432513/embed')
+              "
+            >
+              Chơi ngay
+            </button>
+          </div>
+        </div>
+
+        <!-- Game 3 -->
+        <div class="game-card">
+          <img
+            src="z7685509629148_20129fe9cede7a46148e3490b464ccfc.jpg"
+            alt="Thỏ bảo vệ môi trường"
+          />
+          <div class="game-info">
+            <h3>Thỏ Bảo vệ Môi trường</h3>
+            <p>Thỏ con dễ thương đi khắp nơi ngăn vứt rác và trồng cây xanh.</p>
+            <button
+              class="btn"
+              onclick="
+                openGame('https://scratch.mit.edu/projects/1299432812/embed')
+              "
+            >
+              Chơi ngay
+            </button>
+          </div>
+        </div>
+
+        <!-- Game 4 -->
+        <div class="game-card">
+          <img
+            src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800"
+            alt="Mô phỏng trồng cây"
+          />
+          <div class="game-info">
+            <h3>Mô phỏng Trồng cây</h3>
+            <p>
+              Trồng hạt giống, tưới nước và chăm sóc để cây lớn lên theo thời
+              gian thực.
+            </p>
+            <button
+              class="btn"
+              onclick="
+                openGame('https://scratch.mit.edu/projects/1299433567/embed')
+              "
+            >
+              Chơi ngay
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ý nghĩa của trang web / các trò chơi -->
+      <div class="meaning-section">
+        <h2>Ý nghĩa của các trò chơi Scratch tại Green School</h2>
+        <p>
+          Các trò chơi Scratch không chỉ giúp học sinh làm quen với lập trình
+          một cách vui vẻ mà còn mang đến giá trị giáo dục sâu sắc về bảo vệ môi
+          trường. Qua từng trò chơi, các em sẽ rèn luyện tư duy logic, khả năng
+          sáng tạo, đồng thời hình thành ý thức trách nhiệm với Trái Đất. Đây là
+          cách học hiện đại kết hợp giữa công nghệ và giáo dục bền vững – giúp
+          học sinh vừa học kiến thức, vừa thay đổi hành vi sống xanh từ những
+          năm đầu đời.
+        </p>
+      </div>
+
+      <div class="ve">
+        <a
+          href="index.html"
+          style="
+            color: #2e8b57;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.15rem;
+          "
+        >
+          ← Quay về Trang chủ Green School
+        </a>
+      </div>
+    </div>
+
+    <!-- Popup Scratch -->
+    <div id="gameModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeGame()">×</span>
+        <iframe id="gameFrame"></iframe>
+      </div>
+    </div>
+
+    <footer>
+      <p>🌱 Green School - Trường Học Xanh</p>
+      <p>© 2026 - Học lập trình vui nhộn cùng các trò chơi Scratch</p>
+    </footer>
+
+    <script>
+      function openGame(link) {
+        document.getElementById("gameModal").style.display = "flex";
+        document.getElementById("gameFrame").src = link;
+      }
+
+      function closeGame() {
+        document.getElementById("gameModal").style.display = "none";
+        document.getElementById("gameFrame").src = "";
+      }
+
+      // Click ngoài để đóng popup
+      document
+        .getElementById("gameModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) closeGame();
+        });
+    </script>
+  </body>
+</html>

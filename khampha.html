@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khám Phá Hành Động Xanh</title>
+    <link rel="icon" type="image/png" href="logo.png" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        line-height: 1.7;
+        background: #f1f8f4;
+        color: #2e4d3a;
+      }
+      .parallax {
+        background: url("Screenshot 2026-04-05 183550.png") center/cover fixed;
+        height: 380px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        position: relative;
+      }
+      .parallax::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+      }
+      .parallax h1 {
+        position: relative;
+        z-index: 2;
+        font-size: 2.8rem;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 20px 40px;
+        border-radius: 15px;
+      }
+
+      section {
+        max-width: 1100px;
+        margin: 50px auto;
+        padding: 35px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        opacity: 0;
+        transform: translateY(50px);
+        transition: 0.9s ease;
+      }
+      section.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      h2 {
+        color: #2e7d32;
+        margin-bottom: 20px;
+        font-size: 1.9rem;
+      }
+
+      .card {
+        background: #e8f5e9;
+        padding: 22px;
+        border-radius: 15px;
+        margin: 20px 0;
+        border-left: 6px solid #2e7d32;
+      }
+      .card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 25px rgba(46, 125, 50, 0.15);
+      }
+
+      .img {
+        width: 100%;
+        border-radius: 15px;
+        margin: 25px 0;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 12px 28px;
+        background: #2e7d32;
+        color: white;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .btn:hover {
+        background: #1b5e20;
+        transform: translateY(-3px);
+      }
+
+      .back {
+        text-align: center;
+        margin: 50px 0;
+      }
+      .back a {
+        padding: 14px 32px;
+        background: #2e7d32;
+        color: white;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 1.1rem;
+      }
+
+      /* Phần nhập tuổi */
+      .age-input {
+        margin: 30px 0;
+        text-align: center;
+        background: #e8f5e9;
+        padding: 25px;
+        border-radius: 15px;
+      }
+      .age-input label {
+        font-size: 1.3rem;
+        margin-right: 15px;
+        color: #1b5e20;
+      }
+      .age-input input {
+        padding: 12px 20px;
+        font-size: 1.2rem;
+        width: 120px;
+        border: 2px solid #2e7d32;
+        border-radius: 10px;
+        text-align: center;
+      }
+      #ageResult {
+        margin-top: 25px;
+        min-height: 120px;
+        font-size: 1.1rem;
+      }
+      /* HEADER bo tròn */
+      .parallax {
+        background: url("Screenshot 2026-04-05 183550.png") center/cover fixed;
+        height: 380px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        position: relative;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        overflow: hidden;
+      }
+
+      /* ẢNH nhỏ lại + đẹp hơn */
+      .img {
+        width: 80%;
+        max-width: 700px;
+        display: block;
+        margin: 25px auto;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        transition: 0.3s;
+      }
+
+      .img:hover {
+        transform: scale(1.03);
+      }
+
+      /* FOOTER bo tròn */
+      footer {
+        margin-top: 50px;
+        padding: 30px;
+        background: linear-gradient(135deg, #2e7d32, #66bb6a);
+        color: white;
+        text-align: center;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parallax">
+      <h1>🌍 Khám Phá Hành Động Xanh</h1>
+    </div>
+
+    <section>
+      <h2>🌱 Tại sao chúng ta cần bảo vệ môi trường?</h2>
+      <p>
+        Môi trường là ngôi nhà chung của toàn nhân loại. Hiện nay Trái Đất đang
+        phải đối mặt với biến đổi khí hậu, ô nhiễm nhựa, mất rừng, và suy giảm
+        đa dạng sinh học. Nếu không hành động ngay, các thế hệ sau sẽ phải chịu
+        hậu quả nặng nề.
+      </p>
+      <p>
+        Bảo vệ môi trường chính là bảo vệ sức khỏe, tương lai và chính cuộc sống
+        của chúng ta. Mỗi hành động nhỏ của hôm nay đều góp phần tạo nên một
+        Trái Đất xanh hơn.
+      </p>
+      <img
+        class="img"
+        src="https://images.unsplash.com/photo-1469474968028-56623f02e42e"
+        alt="Rừng xanh tươi đẹp"
+      />
+    </section>
+
+    <section>
+      <h2>🔥 Thực trạng môi trường đáng báo động</h2>
+      <div class="card">
+        <ul>
+          <li>Mỗi năm có khoảng 8 triệu tấn nhựa thải ra đại dương</li>
+          <li>Rừng nhiệt đới đang mất đi với tốc độ cực nhanh</li>
+          <li>
+            Hơn 1 triệu loài động thực vật đang đứng trước nguy cơ tuyệt chủng
+          </li>
+          <li>
+            Ô nhiễm không khí gây ra gần 7 triệu ca tử vong mỗi năm trên toàn
+            thế giới
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>🛠️ Những hành động xanh dễ làm hàng ngày</h2>
+      <div class="card">
+        <p>
+          <strong>Ở nhà:</strong> Phân loại rác, dùng túi vải, tắt đèn khi không
+          dùng, tiết kiệm nước, trồng cây trên ban công.
+        </p>
+        <p>
+          <strong>Ở trường:</strong> Không xả rác bừa bãi, dùng bình nước cá
+          nhân, tham gia dọn vệ sinh lớp.
+        </p>
+      </div>
+      <img
+        class="img"
+        src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1"
+        alt="Trẻ em trồng cây"
+      />
+    </section>
+
+    <!-- ==================== PHẦN NHẬP TUỔI & GỢI Ý ==================== -->
+    <section>
+      <h2>💡 Tìm hành động xanh phù hợp với tuổi của bạn</h2>
+
+      <div class="age-input">
+        <label for="age">Nhập tuổi của bạn:</label>
+        <input
+          type="number"
+          id="age"
+          min="6"
+          max="100"
+          placeholder="Ví dụ: 12"
+        />
+        <button
+          onclick="suggestActions()"
+          class="btn"
+          style="padding: 12px 25px; margin-left: 10px"
+        >
+          Gợi ý hành động
+        </button>
+
+        <div id="ageResult"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>🌟 Hành động nâng cao</h2>
+      <div class="card">
+        <p>Bạn có thể tham gia:</p>
+        <ul>
+          <li>Chiến dịch Ngày Trái Đất (22/4)</li>
+          <li>Hoạt động trồng rừng và làm sạch biển</li>
+          <li>Các dự án tình nguyện môi trường</li>
+          <li>Tuyên truyền và lan tỏa lối sống xanh đến cộng đồng</li>
+        </ul>
+      </div>
+      <a href="https://www.earthday.org/" target="_blank" class="btn"
+        >Tham gia Earth Day</a
+      >
+    </section>
+
+    <div class="back">
+      <a href="index.html">⬅️ Quay về trang chính</a>
+    </div>
+
+    <footer>
+      <h3>🌿 Hành động nhỏ – Thay đổi lớn</h3>
+      <p>Mỗi người góp một chút, Trái Đất sẽ trở nên xanh hơn mỗi ngày 💚</p>
+      <p><strong>Cùng nhau hành động ngay hôm nay!</strong></p>
+    </footer>
+
+    <script>
+      // Script gợi ý hành động theo tuổi
+      function suggestActions() {
+        const age = parseInt(document.getElementById("age").value);
+        const resultDiv = document.getElementById("ageResult");
+
+        if (!age || age < 6) {
+          resultDiv.innerHTML = `<p style="color:#d32f2f;">Vui lòng nhập tuổi từ 6 trở lên!</p>`;
+          return;
+        }
+
+        let title = "";
+        let actions = "";
+
+        if (age >= 6 && age <= 11) {
+          title = `👦 Phù hợp với bạn ${age} tuổi (Tiểu học)`;
+          actions = `
+      <ul>
+        <li>Không xả rác bừa bãi, luôn bỏ rác vào thùng đúng nơi</li>
+        <li>Trồng và chăm sóc một cây xanh nhỏ ở nhà hoặc trường</li>
+        <li>Tiết kiệm giấy bằng cách viết hai mặt</li>
+        <li>Tắt đèn và quạt khi ra khỏi phòng</li>
+        <li>Nhắc nhở bố mẹ và anh chị tắt vòi nước khi không dùng</li>
+      </ul>
+    `;
+        } else if (age >= 12 && age <= 15) {
+          title = `🧑 Phù hợp với bạn ${age} tuổi (THCS)`;
+          actions = `
+      <ul>
+        <li>Tái chế chai nhựa, giấy cũ thành đồ handmade</li>
+        <li>Tham gia dọn rác khu vực trường học hoặc công viên</li>
+        <li>Làm poster hoặc video ngắn tuyên truyền bảo vệ môi trường</li>
+        <li>Sử dụng bình nước cá nhân thay vì mua nước đóng chai</li>
+        <li>Khuyến khích gia đình phân loại rác tại nhà</li>
+      </ul>
+    `;
+        } else if (age >= 16 && age <= 18) {
+          title = `🧑‍🎓 Phù hợp với bạn ${age} tuổi (THPT)`;
+          actions = `
+      <ul>
+        <li>Tham gia các dự án môi trường của trường hoặc câu lạc bộ</li>
+        <li>Giảm tối đa sử dụng đồ nhựa dùng một lần (ống hút, túi ni lông)</li>
+        <li>Tổ chức chiến dịch “Ngày không túi ni lông” trong lớp</li>
+        <li>Di chuyển bằng xe đạp hoặc phương tiện công cộng</li>
+        <li>Lan tỏa thông điệp xanh trên mạng xã hội</li>
+      </ul>
+    `;
+        } else {
+          title = `🌟 Phù hợp với bạn ${age} tuổi (Thanh niên & Người lớn)`;
+          actions = `
+      <ul>
+        <li>Tham gia tình nguyện trồng rừng, dọn sạch bãi biển</li>
+        <li>Áp dụng lối sống Zero Waste (giảm chất thải)</li>
+        <li>Hỗ trợ các chiến dịch môi trường lớn</li>
+        <li>Sử dụng sản phẩm thân thiện với môi trường</li>
+        <li>Tham gia và vận động người khác tham gia Giờ Trái Đất</li>
+      </ul>
+    `;
+        }
+
+        resultDiv.innerHTML = `
+    <div class="card">
+      <strong>${title}</strong>
+      ${actions}
+    </div>
+    <p style="text-align:center; margin-top:15px; color:#2e7d32;">
+      <strong>Bắt đầu ngay hôm nay nhé! 🌱 Mỗi hành động đều rất ý nghĩa.</strong>
+    </p>
+  `;
+      }
+
+      // Tự động gợi ý khi nhấn Enter trong ô tuổi
+      document.getElementById("age").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          suggestActions();
+        }
+      });
+    </script>
+
+    <script>
+      // Hiệu ứng scroll
+      const sections = document.querySelectorAll("section");
+      window.addEventListener("scroll", () => {
+        sections.forEach((sec) => {
+          const top = sec.getBoundingClientRect().top;
+          if (top < window.innerHeight - 120) {
+            sec.classList.add("show");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
