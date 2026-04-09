@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GREEN SCHOOL</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+      }
+
+      header {
+        background: #2e7d32;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      /* ===== COUNTER ===== */
+      #counter {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        background: linear-gradient(135deg, #43a047, #66bb6a);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 15px;
+        font-size: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 1s ease;
+        z-index: 9999;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .content {
+        padding: 40px;
+        text-align: center;
+        color: #2e7d32;
+      }
+
+      /* ===== NÚT QUAY VỀ ===== */
+      .back-btn {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background: #2e7d32;
+        color: white;
+        padding: 12px 18px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transition: 0.3s;
+      }
+
+      .back-btn:hover {
+        background: #1b5e20;
+        transform: translateY(-3px);
+      }
+      /* ===== FOOTER ĐẸP ===== */
+      footer {
+        background: #096934;
+        color: white;
+        padding: 60px 20px 30px;
+        text-align: center;
+      }
+
+      .footer-grid {
+        display: flex;
+        flex-direction: column; /* căn giữa theo chiều dọc */
+        align-items: center;
+        gap: 10px;
+      }
+
+      .footer-grid h3 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+      }
+
+      .footer-grid p {
+        font-size: 1rem;
+        opacity: 0.9;
+      }
+
+      .footer-bottom {
+        margin-top: 40px;
+        font-size: 1rem;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>🌿 GREEN SCHOOL – Website môi trường</header>
+
+    <!-- ===== BỘ ĐẾM ===== -->
+    <div id="counter">
+      👥 Đã có <b><span id="visitCount">0</span></b> lượt truy cập
+    </div>
+
+    <!-- ===== NÚT LINK VỀ INDEX ===== -->
+    <a href="index.html" class="back-btn">🏠 Home</a>
+
+    <
+    <div class="content">
+      <h2>Chào mừng bạn đến với GREEN SCHOOL</h2>
+      <p>Học tập – Sáng tạo – Bảo vệ môi trường 🌍</p>
+
+      <!-- ẢNH TRANG CHỦ -->
+      <div class="image-box">
+        <img src="chude.png" class="img-center" alt="Môi trường xanh" />
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <h4>Liên hệ</h4>
+          <p>📍 Trường THCS Nguyễn Văn Trỗi, phường Thuỷ Xuân, TP. Huế</p>
+          <p>✉️ info@greenschool.edu.vn</p>
+        </div>
+      </div>
+    </footer>
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close">&times;</span>
+        <img
+          id="popup-img"
+          style="width: 100%; border-radius: 15px; margin-bottom: 15px"
+        />
+        <h2 id="popup-title"></h2>
+        <p id="popup-text"></p>
+      </div>
+    </div>
+    <!-- ===== SCRIPT ===== -->
+    <script>
+      const cards = document.querySelectorAll(".card");
+      const popup = document.getElementById("popup");
+      const title = document.getElementById("popup-title");
+      const text = document.getElementById("popup-text");
+      const closeBtn = document.querySelector(".close");
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          title.innerText = card.dataset.title;
+          text.innerText = card.dataset.text;
+          popup.style.display = "flex";
+        });
+      });
+
+      closeBtn.onclick = () => (popup.style.display = "none");
+
+      window.onclick = (e) => {
+        if (e.target === popup) {
+          popup.style.display = "none";
+        }
+      };
+      let count = localStorage.getItem("visitCount") || 0;
+      count++;
+      localStorage.setItem("visitCount", count);
+
+      let current = 0;
+      let target = count;
+
+      let interval = setInterval(() => {
+        current++;
+        document.getElementById("visitCount").innerText = current;
+
+        if (current >= target) {
+          clearInterval(interval);
+        }
+      }, 20);
+    </script>
+  </body>
+</html>

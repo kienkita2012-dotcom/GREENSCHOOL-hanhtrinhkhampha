@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz Môi Trường</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        background: linear-gradient(135deg, #a8e6cf, #dcedc1, #f0fff0);
+        text-align: center;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 30px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      h1 {
+        color: #2e8b57;
+      }
+
+      .question {
+        font-size: 20px;
+        margin: 20px 0;
+        text-align: left;
+      }
+
+      .option {
+        background: #ecf9ec;
+        margin: 10px 0;
+        padding: 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .option:hover {
+        background: #c8f2c8;
+      }
+
+      .correct {
+        background: #7bed9f !important;
+      }
+      .wrong {
+        background: #ff7675 !important;
+      }
+
+      .answer {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #2e8b57;
+      }
+
+      .score {
+        font-size: 18px;
+        margin-top: 10px;
+      }
+
+      button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: #2e8b57;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .result {
+        font-size: 22px;
+        color: #2e8b57;
+      }
+      .btn-back {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 15px;
+        background: #2e8b57;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+      }
+      .btn-back:hover {
+        background: #246b45;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🌍 TRẮC NGHIỆM VỀ MÔI TRƯỜNG</h1>
+
+      <div id="quiz">
+        <div class="question" id="question"></div>
+        <div id="options"></div>
+        <div class="answer" id="answer"></div>
+        <div class="score" id="score">Điểm: 0</div>
+        <button onclick="nextQuestion()">Câu tiếp theo</button>
+      </div>
+
+      <div id="result" class="result"></div>
+    </div>
+
+    <audio
+      id="correctSound"
+      src="https://www.soundjay.com/buttons/sounds/button-3.mp3"
+    ></audio>
+    <audio
+      id="wrongSound"
+      src="https://www.soundjay.com/buttons/sounds/button-10.mp3"
+    ></audio>
+
+    <script>
+      // ===== CÂU HỎI =====
+      const allQuestions = [
+        {
+          q: "Môi trường là gì?",
+          o: [
+            "Chỉ thiên nhiên",
+            "Bao gồm tự nhiên và nhân tạo",
+            "Chỉ nước",
+            "Chỉ không khí",
+          ],
+          a: 1,
+        },
+        {
+          q: "Ô nhiễm không khí do đâu?",
+          o: ["Trồng cây", "Khí thải", "Nước sạch", "Hoa"],
+          a: 1,
+        },
+        {
+          q: "Hành động bảo vệ môi trường?",
+          o: ["Xả rác", "Trồng cây", "Đốt rừng", "Phá cây"],
+          a: 1,
+        },
+        {
+          q: "Biến đổi khí hậu gây?",
+          o: ["Mát hơn", "Băng tan", "Không đổi", "Lạnh"],
+          a: 1,
+        },
+        {
+          q: "Học sinh nên làm gì?",
+          o: ["Xả rác", "Nhặt rác", "Phá cây", "Đốt rác"],
+          a: 1,
+        },
+
+        {
+          q: "Tài nguyên thiên nhiên là gì?",
+          o: ["Nguồn nhân tạo", "Nguồn tự nhiên", "Đồ dùng", "Máy móc"],
+          a: 1,
+        },
+        {
+          q: "Ô nhiễm nước do?",
+          o: ["Rác thải", "Cây xanh", "Không khí", "Ánh sáng"],
+          a: 0,
+        },
+        {
+          q: "Khí CO2 gây ra?",
+          o: ["Làm mát", "Gây nóng lên", "Không ảnh hưởng", "Làm sạch"],
+          a: 1,
+        },
+        {
+          q: "Rừng có vai trò gì?",
+          o: [
+            "Gây ô nhiễm",
+            "Điều hòa khí hậu",
+            "Không có vai trò",
+            "Làm nóng",
+          ],
+          a: 1,
+        },
+        {
+          q: "Tái chế là gì?",
+          o: ["Vứt đi", "Sử dụng lại", "Đốt rác", "Chôn rác"],
+          a: 1,
+        },
+
+        {
+          q: "Năng lượng sạch là?",
+          o: ["Than đá", "Mặt trời", "Xăng", "Dầu"],
+          a: 1,
+        },
+        {
+          q: "Túi nilon gây?",
+          o: ["Tốt", "Ô nhiễm", "Không ảnh hưởng", "Đẹp"],
+          a: 1,
+        },
+        {
+          q: "Bảo vệ môi trường là?",
+          o: ["Phá hoại", "Giữ gìn", "Đốt phá", "Xả rác"],
+          a: 1,
+        },
+        {
+          q: "Nguồn nước cần?",
+          o: ["Bảo vệ", "Xả rác", "Đổ hóa chất", "Phá hoại"],
+          a: 0,
+        },
+        {
+          q: "Khí hậu nóng lên do?",
+          o: ["CO2", "O2", "N2", "H2"],
+          a: 0,
+        },
+
+        {
+          q: "Ô nhiễm đất do?",
+          o: ["Rác", "Cây", "Nước", "Không khí"],
+          a: 0,
+        },
+        {
+          q: "Cây xanh giúp?",
+          o: ["Gây ô nhiễm", "Lọc không khí", "Không ảnh hưởng", "Làm nóng"],
+          a: 1,
+        },
+        {
+          q: "Tiết kiệm điện giúp?",
+          o: [
+            "Tăng ô nhiễm",
+            "Bảo vệ môi trường",
+            "Không liên quan",
+            "Gây hại",
+          ],
+          a: 1,
+        },
+        {
+          q: "Rác cần được?",
+          o: ["Xả xuống sông", "Phân loại", "Đốt bừa", "Vứt bừa"],
+          a: 1,
+        },
+        {
+          q: "Khí thải từ?",
+          o: ["Xe cộ", "Cây", "Nước", "Đá"],
+          a: 0,
+        },
+
+        {
+          q: "Bảo vệ rừng bằng?",
+          o: ["Chặt cây", "Trồng cây", "Đốt rừng", "Phá rừng"],
+          a: 1,
+        },
+        {
+          q: "Môi trường sống là?",
+          o: ["Không quan trọng", "Quan trọng", "Không cần thiết", "Có thể bỏ"],
+          a: 1,
+        },
+        {
+          q: "Hành động xấu là?",
+          o: ["Nhặt rác", "Xả rác", "Trồng cây", "Tiết kiệm nước"],
+          a: 1,
+        },
+        {
+          q: "Sông bị ô nhiễm do?",
+          o: ["Rác", "Hoa", "Cây", "Đá"],
+          a: 0,
+        },
+        {
+          q: "Không khí sạch là?",
+          o: ["Không ô nhiễm", "Có khói", "Có bụi", "Có rác"],
+          a: 0,
+        },
+
+        {
+          q: "Tái chế giúp?",
+          o: ["Giảm rác", "Tăng rác", "Không đổi", "Gây hại"],
+          a: 0,
+        },
+        {
+          q: "Biến đổi khí hậu gây?",
+          o: ["Nóng lên", "Lạnh hơn", "Không đổi", "Không ảnh hưởng"],
+          a: 0,
+        },
+        {
+          q: "Băng tan gây?",
+          o: ["Nước biển dâng", "Không ảnh hưởng", "Giảm nước", "Lạnh hơn"],
+          a: 0,
+        },
+        {
+          q: "Hành động tốt là?",
+          o: ["Trồng cây", "Phá cây", "Đốt rừng", "Xả rác"],
+          a: 0,
+        },
+        {
+          q: "Môi trường sạch cần?",
+          o: ["Ý thức", "Phá hoại", "Đốt phá", "Xả rác"],
+          a: 0,
+        },
+
+        {
+          q: "Không khí bẩn do?",
+          o: ["Khói", "Cây", "Hoa", "Nước"],
+          a: 0,
+        },
+        {
+          q: "Rác nhựa gây?",
+          o: ["Ô nhiễm", "Tốt", "Không ảnh hưởng", "Đẹp"],
+          a: 0,
+        },
+        {
+          q: "Bảo vệ môi trường là?",
+          o: ["Trách nhiệm", "Không cần", "Phá hoại", "Đốt phá"],
+          a: 0,
+        },
+        {
+          q: "Học sinh cần?",
+          o: ["Giữ gìn", "Phá hoại", "Xả rác", "Đốt rác"],
+          a: 0,
+        },
+        {
+          q: "Nước sạch là?",
+          o: ["Không ô nhiễm", "Bẩn", "Có rác", "Đục"],
+          a: 0,
+        },
+
+        {
+          q: "Cây xanh có tác dụng?",
+          o: ["Lọc không khí", "Gây ô nhiễm", "Không có", "Làm nóng"],
+          a: 0,
+        },
+        {
+          q: "Tiết kiệm nước là?",
+          o: ["Tốt", "Xấu", "Không cần", "Gây hại"],
+          a: 0,
+        },
+        {
+          q: "Phân loại rác là?",
+          o: ["Đúng", "Sai", "Không cần", "Gây hại"],
+          a: 0,
+        },
+        {
+          q: "CO2 nhiều gây?",
+          o: ["Nóng lên", "Lạnh", "Không đổi", "Tốt"],
+          a: 0,
+        },
+        {
+          q: "Ô nhiễm gây?",
+          o: ["Bệnh", "Khỏe", "Không ảnh hưởng", "Tốt"],
+          a: 0,
+        },
+
+        {
+          q: "Hành động đúng?",
+          o: ["Nhặt rác", "Phá hoại", "Xả rác", "Đốt rác"],
+          a: 0,
+        },
+        {
+          q: "Rừng bị phá gây?",
+          o: ["Lũ lụt", "Tốt", "Không ảnh hưởng", "Đẹp"],
+          a: 0,
+        },
+        {
+          q: "Môi trường quan trọng?",
+          o: ["Có", "Không", "Không cần", "Phá hoại"],
+          a: 0,
+        },
+        {
+          q: "Nước cần được?",
+          o: ["Bảo vệ", "Xả rác", "Phá hoại", "Đổ hóa chất"],
+          a: 0,
+        },
+        {
+          q: "Học sinh bảo vệ môi trường bằng?",
+          o: ["Nhặt rác", "Phá cây", "Xả rác", "Đốt rừng"],
+          a: 0,
+        },
+      ];
+
+      // nhân lên thành 50 câu
+      while (allQuestions.length < 50) {
+        allQuestions.push({ ...allQuestions[Math.floor(Math.random() * 5)] });
+      }
+
+      // ===== RANDOM =====
+      function shuffle(a) {
+        return a.sort(() => Math.random() - 0.5);
+      }
+      let quizData = shuffle(allQuestions).slice(0, 10);
+
+      // ===== BIẾN =====
+      let current = 0,
+        score = 0;
+
+      // ===== LOAD =====
+      function loadQuestion() {
+        let q = quizData[current];
+
+        document.getElementById("question").innerText = q.q;
+
+        let html = "";
+        let labels = ["A", "B", "C", "D"];
+
+        q.o.forEach((opt, i) => {
+          html += `<div class="option" onclick="checkAnswer(this,${i})">
+        <b>${labels[i]}.</b> ${opt}
+        </div>`;
+        });
+
+        document.getElementById("options").innerHTML = html;
+        document.getElementById("answer").innerHTML = "";
+      }
+
+      // ===== CHECK =====
+      function checkAnswer(el, i) {
+        let q = quizData[current];
+        let ops = document.querySelectorAll(".option");
+
+        ops.forEach((o) => (o.onclick = null));
+
+        let labels = ["A", "B", "C", "D"];
+
+        if (i === q.a) {
+          el.classList.add("correct");
+          correctSound.play();
+          score++;
+        } else {
+          el.classList.add("wrong");
+          ops[q.a].classList.add("correct");
+          wrongSound.play();
+          score--;
+        }
+
+        document.getElementById("answer").innerHTML =
+          `✔ Đáp án đúng: ${labels[q.a]}. ${q.o[q.a]}`;
+
+        document.getElementById("score").innerText = "Điểm: " + score;
+      }
+
+      // ===== NEXT =====
+      function nextQuestion() {
+        current++;
+        if (current < 10) {
+          loadQuestion();
+        } else {
+          finish();
+        }
+      }
+
+      // ===== KẾT THÚC =====
+      function finish() {
+        document.getElementById("quiz").style.display = "none";
+
+        let msg = "";
+        if (score >= 8) msg = "Xuất sắc 🏆";
+        else if (score >= 5) msg = "Khá 👍";
+        else msg = "Cần cố gắng 💪";
+
+        document.getElementById("result").innerHTML =
+          `🎉 ${msg}<br>Điểm cuối: ${score}`;
+      }
+
+      // ===== START =====
+      loadQuestion();
+    </script>
+</div>
+
+        <p
+          style="
+            text-align: center;
+            font-size: 1.35rem;
+            color: #2e8b57;
+            font-weight: 600;
+            margin-top: 30px;
+          "
+        >
+          “Hôm nay học kiến thức môi trường,<br />
+          Ngày mai chúng ta sẽ sống xanh và hành động vì một Trái Đất sạch hơn!”
+        </p>
+      </div>
+
+      <div style="text-align: center">
+        <a href="index.html" class="btn-back"
+          >← Quay về Trang chủ Green School</a
+        >
+      </div>
+    </div>
+
+    <footer>
+      <p>🌱 Green School - Trường Học Xanh</p>
+      <p>© 2026 - Nuôi dưỡng thế hệ yêu môi trường và có trách nhiệm</p>
+    </footer>
+    <script>
+      function toggleContent() {
+        const content = document.getElementById("toggleContent");
+        const arrow = document.getElementById("arrow");
+
+        if (content.classList.contains("show")) {
+          content.classList.remove("show");
+          arrow.textContent = "▼";
+        } else {
+          content.classList.add("show");
+          arrow.textContent = "▲";
+        }
+      }
+    </script>
+</body>
+</html>
